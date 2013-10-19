@@ -1,4 +1,4 @@
-package com.notbed.util;
+package com.notbed.util.mass;
 
 /**
  * @author Alexandru Bledea

@@ -10,6 +10,8 @@ import java.sql.Statement;
 
 import org.apache.commons.logging.LogFactory;
 
+import com.notbed.util.mass.VoidEvaluator;
+
 /**
  * @author Alexandru Bledea
  * @since Sep 22, 2013
