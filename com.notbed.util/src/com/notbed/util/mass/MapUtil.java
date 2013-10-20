@@ -117,12 +117,14 @@ public class MapUtil {
 	 * <b>map</b>.put(<b>key</b>, x);<br>
 	 * return x;<br>
 	 *
+	 * @deprecated consider using AIMap instead
 	 * @param map
 	 * @param key
 	 * @param initValue
 	 * @param initializer
 	 * @return
 	 */
+	@Deprecated
 	public static <K, X, I, V extends X> V get(Map<K, V> map, K key, I initValue, IEvaluator<I, X> initializer) {
 		if (map.containsKey(key)) {
 			return map.get(key);
@@ -145,7 +147,7 @@ public class MapUtil {
 	 * <b>map</b>.put(<b>key</b>, x);<br>
 	 * return x;<br>
 	 *
-	 *	@deprecated consider using one of the NN...Map implementations instead
+	 *	@deprecated consider using AIMap instead
 	 * @param map
 	 * @param key
 	 * @param initializer
