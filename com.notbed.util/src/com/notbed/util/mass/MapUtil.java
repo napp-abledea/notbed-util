@@ -147,7 +147,7 @@ public class MapUtil {
 	 * <b>map</b>.put(<b>key</b>, x);<br>
 	 * return x;<br>
 	 *
-	 *	@deprecated consider using AIMap instead
+	 * @deprecated consider using AIMap instead
 	 * @param map
 	 * @param key
 	 * @param initializer
@@ -214,14 +214,14 @@ public class MapUtil {
 	 * @param <V>
 	 *
 	 */
-	public static class LazyInitCallable<V> extends LazyInit<V> {
+	public static class LazyCallable<V> extends LazyInit<V> {
 
 		protected Callable<V> callable;
 
 		/**
 		 * @param callable
 		 */
-		public LazyInitCallable(Callable<V> callable) {
+		public LazyCallable(Callable<V> callable) {
 			if ((this.callable = callable) == null) {
 				throw new RuntimeException("Missing initializer");
 			}
