@@ -5,8 +5,6 @@ package com.notbed.util;
 
 import java.io.Closeable;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 import org.apache.commons.logging.LogFactory;
 
@@ -26,32 +24,6 @@ public class UClose {
 		@Override
 		protected void close(Closeable object) throws Exception {
 			object.close();
-		}
-	};
-
-	public static VoidEvaluator<ResultSet> RESULT_SET = new CloseEvaluator<ResultSet>() {
-
-		/* (non-Javadoc)
-		 * @see com.notbed.util.UClose.CloseEvaluator#close(java.lang.Object)
-		 */
-		@Override
-		protected void close(ResultSet object) throws Exception {
-			if (!object.isClosed()) {
-				object.close();
-			}
-		}
-	};
-
-	public static VoidEvaluator<Statement> STATEMENT = new CloseEvaluator<Statement>() {
-
-		/* (non-Javadoc)
-		 * @see com.notbed.util.UClose.CloseEvaluator#close(java.lang.Object)
-		 */
-		@Override
-		protected void close(Statement object) throws Exception {
-			if (!object.isClosed()) {
-				object.close();
-			}
 		}
 	};
 
