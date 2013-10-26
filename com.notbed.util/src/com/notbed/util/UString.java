@@ -6,6 +6,7 @@ package com.notbed.util;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * @author Alexandru Bledea
@@ -108,6 +109,36 @@ public class UString {
 			strings.add(string);
 		}
 		return strings;
+	}
+
+	/**
+	 * @param string
+	 * @param separator
+	 * @param returnEmptyLines
+	 * @return
+	 */
+	public static List<String> breakAndTrimLines(String string, String separator, boolean returnEmptyLines) {
+		if (string == null) {
+			string = "";
+		}
+		List<String> nonEmptyStrings = new ArrayList();
+		String[] pieces = string.split(separator);
+		for (String piece : pieces) {
+			piece = piece.trim();
+			if (returnEmptyLines || !piece.isEmpty()) {
+				nonEmptyStrings.add(piece);
+			}
+		}
+		return nonEmptyStrings;
+	}
+
+	/**
+	 * @param string
+	 * @param separator
+	 * @return
+	 */
+	public static List<String> breakAndTrimLines(String string, String separator) {
+		return breakAndTrimLines(string, separator, false);
 	}
 
 }
