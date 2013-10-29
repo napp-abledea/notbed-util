@@ -5,6 +5,8 @@ package com.notbed.util;
 
 import java.io.Closeable;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 import org.apache.commons.logging.LogFactory;
 
@@ -16,7 +18,7 @@ import com.notbed.util.mass.VoidEvaluator;
  */
 public class UClose {
 
-	public static VoidEvaluator<Closeable> CLOSEABLE = new CloseEvaluator<Closeable>() {
+	public static VoidEvaluator<Closeable> CLOSE_CLOSEABLE = new CloseEvaluator<Closeable>() {
 
 		/* (non-Javadoc)
 		 * @see com.notbed.util.UClose.CloseEvaluator#close(java.lang.Object)
@@ -27,7 +29,33 @@ public class UClose {
 		}
 	};
 
-	public static VoidEvaluator<Connection> CONNECTION = new CloseEvaluator<Connection>() {
+	public static VoidEvaluator<ResultSet> CLOSE_RESULT_SET = new CloseEvaluator<ResultSet>() {
+
+		/* (non-Javadoc)
+		 * @see com.notbed.util.UClose.CloseEvaluator#close(java.lang.Object)
+		 */
+		@Override
+		protected void close(ResultSet object) throws Exception {
+			if (!object.isClosed()) {
+				object.close();
+			}
+		}
+	};
+
+	public static VoidEvaluator<Statement> CLOSE_STATEMENT = new CloseEvaluator<Statement>() {
+
+		/* (non-Javadoc)
+		 * @see com.notbed.util.UClose.CloseEvaluator#close(java.lang.Object)
+		 */
+		@Override
+		protected void close(Statement object) throws Exception {
+			if (!object.isClosed()) {
+				object.close();
+			}
+		}
+	};
+
+	public static VoidEvaluator<Connection> CLOSE_CONNECTION = new CloseEvaluator<Connection>() {
 
 		/* (non-Javadoc)
 		 * @see com.notbed.util.UClose.CloseEvaluator#close(java.lang.Object)
