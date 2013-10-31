@@ -28,16 +28,25 @@ public class UString {
 	 * @return
 	 */
 	public static String join(Collection<String> collection, String separator) {
+		if (collection.isEmpty()) {
+			return "";
+		}
+		return join(collection.iterator(), separator);
+	}
+
+	/**
+	 * @param collection
+	 * @param separator
+	 * @return
+	 */
+	public static String join(Iterator<String> iterator, String separator) {
 		StringBuilder sb = new StringBuilder();
-		if (!collection.isEmpty()) {
-			Iterator<String> iterator = collection.iterator();
-			boolean hasNext = true;
-			while (hasNext) {
-				sb.append(iterator.next());
-				hasNext = iterator.hasNext();
-				if (hasNext) {
-					sb.append(separator);
-				}
+		boolean hasNext = true;
+		while (hasNext) {
+			sb.append(iterator.next());
+			hasNext = iterator.hasNext();
+			if (hasNext) {
+				sb.append(separator);
 			}
 		}
 		return sb.toString();
